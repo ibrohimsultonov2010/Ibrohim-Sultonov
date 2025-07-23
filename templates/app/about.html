@@ -1,0 +1,127 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Ibrohim Sultonov haqida - Portfolio, Dasturchi, Dizayner{% endblock %}
+
+{% block content %}
+<!-- SEO Meta Tags -->
+{% block meta_tags %}
+<meta name="description" content="Ibrohim Sultonov haqida: tajribali web dasturchi va grafik dizayner. Portfolio, ish tajribasi va xizmatlar haqida batafsil.">
+<meta name="keywords" content="Ibrohim Sultonov, portfolio, dasturchi, dizayner, web dasturlash, grafik dizayn, logo dizayn, Toshkent, O'zbekiston, Python, Django">
+<meta name="author" content="Ibrohim Sultonov">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Ibrohim Sultonov - Portfolio va Haqida sahifa">
+<meta property="og:description" content="Web va grafik dizayn sohasida tajribali mutaxassis. Portfolio va aloqa sahifasi.">
+<meta property="og:image" content="{% static 'images/ibrohim301-logo.png' %}">
+<meta property="og:url" content="https://ibrohim.uz/ibrohim-sultonov-haqida">
+<meta name="twitter:card" content="summary_large_image">
+{% endblock %}
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Ibrohim Sultonov",
+  "url": "https://ibrohim.uz/",
+  "image": "https://ibrohim.uz/static/images/ibrohim301-logo.png",
+  "sameAs": [
+    "https://t.me/IBROHIMBOI_AKAUNT_SAVDO",
+    "https://instagram.com/ibrohim_dizayn"
+  ],
+  "jobTitle": "Web Dasturchi va Grafik Dizayner",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Freelance"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Toshkent",
+    "addressCountry": "UZ"
+  }
+}
+</script>
+
+<!-- About Hero Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="about-content">
+                    <h1 class="display-4 fw-bold mb-4">Ibrohim Sultonov haqida</h1>
+                    <p class="lead mb-4">
+                        {% if personal_info %}
+                            {{ personal_info.description }}
+                        {% else %}
+                            Men Ibrohim Sultonovman — zamonaviy web texnologiyalari bilan ishlaydigan tajribali dasturchiman. 
+                            Chiroyli va funksional web saytlar yaratishda mutaxassisman.
+                        {% endif %}
+                    </p>
+                    <!-- Contact Info -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-envelope text-primary me-3 fa-lg"></i>
+                                <div>
+                                    <small class="text-muted">Email</small>
+                                    <div class="fw-bold">
+                                        {% if personal_info %}
+                                            {{ personal_info.email }}
+                                        {% else %}
+                                            example@email.com
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-phone text-primary me-3 fa-lg"></i>
+                                <div>
+                                    <small class="text-muted">Telefon</small>
+                                    <div class="fw-bold">
+                                        {% if personal_info %}
+                                            {{ personal_info.phone }}
+                                        {% else %}
+                                            +998 90 123 45 67
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-map-marker-alt text-primary me-3 fa-lg"></i>
+                                <div>
+                                    <small class="text-muted">Manzil</small>
+                                    <div class="fw-bold">
+                                        {% if personal_info %}
+                                            {{ personal_info.location }}
+                                        {% else %}
+                                            Toshkent, O'zbekiston
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                {% if personal_info and personal_info.profile_image %}
+                    <div class="about-profile-container">
+                        <img src="{{ personal_info.profile_image.url }}" alt="Ibrohim Sultonov rasmi - portfolio sahifasi" class="about-profile-image">
+                    </div>
+                {% else %}
+                    <div class="about-profile-container">
+                        <img src="{% static 'images/ibrohim301-logo.png' %}" alt="Ibrohim Sultonov logo" class="about-profile-image">
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pastki qismi (Skills, Tajriba, Ta'lim) avvalgi kodlaringizda bor va o'zgarmaydi -->
+
+{% endblock %}
